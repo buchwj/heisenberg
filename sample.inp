@@ -1,0 +1,15 @@
+! simulation parameters
+length 20
+j 1.0000
+ptamp 0.001
+recfrq 100
+! external field - set ext to 0 to disable
+ext 1
+mu 1.0000
+h_x 0.0000
+h_y 0.0000
+h_z 1.0000
+! simulated annealing temperature program
+thnstep 2000
+thstart 200.0
+thslope -0.1

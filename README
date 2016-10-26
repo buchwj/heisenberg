@@ -1,0 +1,88 @@
+=============================================
+---------------------------------------------
+=============================================
+
+-----------------------
+  10/26/2016
+  What is this?
+-----------------------
+
+This is an example of how to use Nvidia's CUDA API to implement a Monte Carlo
+type algorithm with GPU acceleration to simulate a classical lattice model.
+I wrote this code back in Fall 2014 as a class project for PHYS 4960,
+"Scientific Computing on Modern Architectures for Physics", taken as part of
+my doctoral studies in theoretical chemistry at Rensselaer Polytechnic
+Institute.  I haven't modified this code since I first submitted it (aside from
+sticking the GPL at the top of each source file), but it worked quite well for
+me on the Stampede supercomputer at the Texas Advanced Computing Center back in
+the day.  It just occurred to me to release the code under the GPLv3 so that
+other people could play with it, extend it, improve it, or simply critique it.
+
+Any comments or questions, feel free to either open an issue on Github at
+http://github.com/buchwj/heisenberg, or send me an email at buchwj@rpi.edu.
+
+Note: a copy of CUDPP is included in this repository.  See cudpp/license.txt
+for copyright information and license details for CUDPP.
+
+--
+James R. Buchwald
+Doctoral Candidate, Dinolfo Laboratory
+Dept. of Chemistry and Chemical Biology
+Rensselaer Polytechnic Institute
+http://www.rpi.edu/~buchwj
+buchwj@rpi.edu
+
+=============================================
+---------------------------------------------
+ Original unmodified README from the original
+ submission is below this line.
+---------------------------------------------
+=============================================
+
+Runtime requirements:
+   CUDA SDK, version 6.0 or later
+   CUDA-enabled GPU with compute capability 3.5 or greater
+
+Compilation requirements:
+   CUDA SDK, version 6.0 or later
+   CMake, version 2.6 or later
+
+=============================================
+
+Compilation instructions:
+ - cd to cudpp/build/
+ - Create the CUDPP makefiles by running 'cmake ..'
+ - Build CUDPP by running 'make' (this may take 20 to 30 minutes)
+ - cd back to the build/ directory
+ - Create the heisenberg.x makefiles by running 'cmake ..'
+   - If you want debug symbols, run 'cmake -DCMAKE_BUILD_TYPE=Debug ..'
+     instead
+ - Run 'make'; this will build heisenberg.x in the build/ directory.
+
+=============================================
+
+Using heisenberg.x:
+
+  ./heisenberg.x inputfile
+
+where inputfile is the path to the simulation input file.
+For information on the input file format, see Appendix A of the project
+report, or look at input.h and input.cpp.
+
+heisenberg.x will print a log of its activity to stdout.  It may be
+helpful to redirect this stream to a log file, for example:
+
+  ./heisenberg.x inputfile > heisenberg.log
+
+Spin states will be periodically saved to the working directory in files
+named 'step[x].dat', where [x] is the step number.  heisenberg.x will
+overwrite any previous step[x].dat files when running, so it is recommended
+that a separate working directory is created for each simulation.
+
+=============================================
+
+Questions, email James at <buchwj@rpi.edu>.
+
+=============================================
+Last revised 21 November 2014.
+
